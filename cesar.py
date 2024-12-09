@@ -36,6 +36,16 @@ def make_encrypt(d:int)->callable:
         return encrypt_word(word,d)
    
    return encrypt
+
+
+def creaParCesar(d:int):
+    def encrypt(word:str)-> str:
+        return encrypt_word(word,d)
+    
+    def decrypt(word:str)-> str:
+        return encrypt_word(word,-d)
+    
+    return encrypt,decrypt
    
 
 assert encrypt_letter("a",2) == "C"
@@ -52,3 +62,10 @@ assert encrypt_word("ZigZag", 2) == "AKIACI", "no funciona"
 
 cesar2 = make_encrypt(2)
 assert cesar2("ZigZag") == "AKIACI" 
+
+
+cifrar3,desdifrar3 = creaParCesar(3)
+assert cifrar3("ZigZag") == "BLJBDJ"
+assert desdifrar3("BLJBDJ") == "ZIGZAG"
+
+
