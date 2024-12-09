@@ -1,4 +1,4 @@
-def encrypt(letter:str,num:int)->str:
+def encrypt_letter(letter:str,num:int)->str:
     """
     Recibe una letra y un número, devuelve la letra del diccionario que corresponda
     al número de saltos indicados
@@ -27,20 +27,28 @@ def encrypt_word(word:str,num:int)->str:
     """
     new_word = ""
     for leter in word:
-        new_word += encrypt(leter,num)
+        new_word += encrypt_letter(leter,num)
     return new_word
 
-def creaCifrador(d:int)->callable:
-    return encrypt(d)
+def make_encrypt(d:int)->callable:
+   
+   def encrypt(word:str)-> str:
+        return encrypt_word(word,d)
+   
+   return encrypt
+   
 
-assert encrypt("a",2) == "C"
-assert encrypt("C",2) == "E"
-assert encrypt("Z",2) == "A"
-assert encrypt("z",2) == "A"
-assert encrypt(" ",2) == "B"
+assert encrypt_letter("a",2) == "C"
+assert encrypt_letter("C",2) == "E"
+assert encrypt_letter("Z",2) == "A"
+assert encrypt_letter("z",2) == "A"
+assert encrypt_letter(" ",2) == "B"
 
 
 assert encrypt_word("CABRA", 2) == "ECDTC", "no funciona"
 assert encrypt_word("ZIGZAG", 2) == "AKIACI", "no funciona"
 assert encrypt_word("ZigZag", 2) == "AKIACI", "no funciona"
-#assert creaCifrador
+
+
+cesar2 = make_encrypt(2)
+assert cesar2("ZigZag") == "AKIACI" 
