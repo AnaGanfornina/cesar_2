@@ -17,8 +17,8 @@ def test_encrypt_word():
     assert encrypt_word("ZIGZAG", 2) == "AKIACI", "no funciona"
     assert encrypt_word("ZigZag", 2) == "AKIACI", "no funciona"
 
-def test_cifrado_simple_con_caracteres_raros(): #cambiar el nombre
-    assert encrypt_word("hola,mundo!",1) == "IPMB,ANVÑEP!"
+def test_simple_encrypt_whith_stranges_characters(): 
+    assert encrypt_word("hola, mundo!",1) == "IPMB,ANVÑEP!"
 
 def test_make_encrypt():
     cesar2 = make_encrypt(2)
